@@ -51,3 +51,20 @@
 ## Базы данных
 
 _Раздел будет дополняться._
+
+---
+
+Для популярного в России формата баз данных Cronos следует использовать либо соответствующую версию клиента (Cronos, CronosPlus, CronosPro)
+либо можно сконвертировать базу в формат таблицы CSV с помощью утилиты [cronodump](https://github.com/alephdata/cronodump):
+
+```
+git clone https://github.com/alephdata/cronodump && cd cronodump
+python3 setup.py install
+croconvert --csv cronos_db_directory/
+
+# будет создана новая директория c файлами
+ls cronodump-2022-04-25-02-53-57-293000
+БТК.csv  Files-FL
+
+grep ...
+```
