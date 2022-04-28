@@ -24,11 +24,10 @@ and in specialized databases (1C, Cronos, etc.).
 
 ### dnGrep
 
-[dnGrep](http://dngrep.github.io/) - универсальная утилита с графическим интерфейсом для Windows, умеет искать в текстовых файлах, документах,
-PDF и во всех популярных форматах архивов. Поддерживается поиск по регулярному выражению и по всем файлам в директории, есть интеграция с Проводником.
+[dnGrep](http://dngrep.github.io/) - a universal tool with graphical user interface for Windows, that can do search through text files, documents,
+PDF and in the most popular formats of artchives. Regular expressions and recursive search in the directories are supported. Extra capatibilities: Windows Explorer integration!
 
-Несмотря на некоторые неудобства с подсветкой результатов и сбои применительно к большим архивам, выглядит одной из самых перспективных для массового поиска
-в файлах с текстовым содержимым.
+Despite on some problems with visualization of search and fails with big archives dnGrep looks like the most perspective tool for mass search in text files.
 
 ![image](https://github.com/dnGrep/dnGrep/wiki/Images/grep-main.png)
 
@@ -36,17 +35,15 @@ PDF и во всех популярных форматах архивов. По�
 
 ### grep
 
-Эталон отрасли для поиска в текстовых файлах - это unix-утилита `grep`. Вы указываете при её запуске два параметра: шаблон для поиска и файл;
-после чего утилита выводит строки, совпавшие с шаблоном. В простейшем случае шаблоном является некая строка, которую мы хотим найти в файле
-(например, номер телефона или почтовый ящик).
+Unix tool `grep` is the standard of the searchers. You should only pass two parameters: search pattern and file, and the tool searches lines that match the pattern. The pattern can be a simple string (for example, phone number or email address).
 
-На базе `grep` также построены другие утилиты, так что запомним основные параметры для запуска:
+`grep` is used by other utilities (or just its syntax), so let's consider some main arguments:
 
-`-A number` - вывод некоторого количества строк после (`after`) найденной: полезно, если дополнительные сведения хранятся в файле после нашей строки
+`-A number` - print `number` lines of context after each match
 
-`-B number` - вывод некоторого количества строк до (`before`) найденной: полезно, если дополнительные сведения хранятся в файле до нашей строки
+`-B number` - print `number` lines of context before each match
 
-`-С number` - вывод некоторого количества строк до и после найденной
+`-С number` - print `number` lines of context surrounding each match
 
 `-i` - регистронезависимый поиск, только при этом режиме поиск по `Target` и `target` найдёт строку "TARGET"
 
