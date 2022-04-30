@@ -4,6 +4,8 @@ The goal of this guide is to describe tools for search and for simplification of
 The guide is applicable for searching in breaches of various formats (archive big text files, csv/sql), documents (pdf, xls/x, doc/x)
 and in specialized databases (1C, Cronos, etc.).
 
+[Russian version](./README-RU.md) | English version
+
 ## Contents
 
 - [Universal search](#universal-search)
@@ -18,7 +20,7 @@ and in specialized databases (1C, Cronos, etc.).
   - [unrar](#unrar)
 - [Databases](#databases)
   - [cronodump (Cronos)](#cronodump)
-  - [onec_dtools (1C)](#onec_dtools)
+  - [1c-database-converter (1C)](#1c)
 
 ## Universal search
 
@@ -43,52 +45,59 @@ Unix tool `grep` is the standard of the searchers. You should only pass two para
 
 `-B number` - print `number` lines of context before each match
 
-`-С number` - print `number` lines of context surrounding each match
+`-C number` - print `number` lines of context surrounding each match
 
-`-i` - регистронезависимый поиск, только при этом режиме поиск по `Target` и `target` найдёт строку "TARGET"
+`-i` - case-insensitive search: search on the `Target` and `target` words will found `TARGET`
 
-`-R` - рекурсивный поиск, в этом режиме утилита сможет искать во всех вложенных директориях (для поиска по любым файлам в текущей достаточно указать * вместо названия файла)
+`-R` - recursive search: the tool will scan all the nested directories (you can use * as the name of file)
 
-`-a` - воспринимать все файлы как текстовые, использовать при ошибке `Двоичный файл (стандартный ввод) совпадает`
+`-a` - treat all files as text files, use in case of the error `Binary file (standard input) matches`
 
-Пример поиска в текстовом файле:
+Example of `grep` usage:
 
-`grep -iR target dumps/*` - будет произведён поиск по слову `target` во всех регистрах во всех текстовых файлах в директории `dumps`
+`grep -iR target dumps/*` - search on the word `target` (case-insensitive) throuhg all the text files in the directory `dumps`
 
 ## Documents
 
 ### xlsxgrep
 
-Для поиска в документах XLSX можно использовать либо `grep`, предварительно сконвертировав таблицу в CSV, либо использовать утилиту
-`xlsxgrep`. Пример поиска:
+It will be best to convert `XLSX` files to `CSV` and use `grep` for the search or just use tool`xlsxgrep`.
+
+Usage example:
 
 `xlsxgrep target -H -N -r dumps/*`
 
 ## Archives
 
-- [ ] Написать универсальный скрипт для поиска во всех типах архивов
+- [ ] TODO: link to a universal script for search through the all types of archives
 
 ### zgrep
 
-Для поиска в архивах .gz, .tgz можно использовать утилиту `zgrep`.
+It will be best to use `zgrep` for searching in archives .gz and .tgz.
 
-Использование аналогично обычному `grep`, за исключением следующих особенностей:
-- режим рекурсивного поиска `-R` не поддерживается
-- наряду с архивами утилита также может искать по текстовым файлам
+The tool is a direct analogue of `grep` except for the following:
+- the recursive mode `-R` is not supported
+- the tool can search both through text files and thtough archives
 
-`zgrep -ia target dumps/*` - будет произведён поиск по слову `target` во всех регистрах во всех текстовых файлах и gz-архивах в директории `dumps`
+Example of `zgrep` usage:
+
+`zgrep -ia target dumps/*` - search on the word `target` (case-insensitive) throuhg all the text files and through gz-archives un the directory `dumps`
 
 ### 7zip
 
-Для поиска в архивах `7zip` можно использовать соответствующую утилиту для полной распаковки в цепочке с `grep`:
+It will be best to use `7zip` unpacking tool with `grep` to search through 7z archives:
+
+Usage example:
 
 `7z x archive.7z -so | grep ...`
 
-`7zip` также умеет работать со многими другими типами архивов.
+`7zip` also can work with other types of archives.
 
 ### unrar
 
-Для поиска в архивах `rar` можно использовать соответствующую утилиту для полной распаковки в цепочке с `grep`:
+It will be best to use `unrar` unpacking tool with `grep` to searcg through the rar archives:
+
+Usage example:
 
 `unrar p archive.rar | grep ...`
 
@@ -96,24 +105,32 @@ Unix tool `grep` is the standard of the searchers. You should only pass two para
 
 ### cronodump
 
-Для популярного в России формата баз данных Cronos следует использовать либо соответствующую версию клиента (Cronos, CronosPlus, CronosPro)
-либо можно сконвертировать базу в формат таблицы CSV с помощью утилиты [cronodump](https://github.com/alephdata/cronodump):
+There is a popular database software and file format `Cronos` in Russia. It will be best to use an appropriate version of official client (Cronos, CronosPlus, CronosPro) or you can just convert database to a CSV file with the tool [cronodump](https://github.com/alephdata/cronodump):
 
 ```
 git clone https://github.com/alephdata/cronodump && cd cronodump
 python3 setup.py install
 croconvert --csv cronos_db_directory/
 
-# будет создана новая директория c файлами
+# a new directory will be created 
 ls cronodump-2022-04-25-02-53-57-293000
 БТК.csv  Files-FL
 
 grep ...
 ```
 
-### onec_dtools
+### 1C
 
-Для анализа файлов баз данных 1C можно использовать скрипты на основе утилиты [onec_dtools](https://github.com/Infactum/onec_dtools),
-позволяющие вытащить все текстовые строки и бинарные данные из базы любого формата.
+There is a popular software 1C in Russia. 1C uses its own file formats: .1CD, .efd and others. You can use [onec_dtools](https://github.com/Infactum/onec_dtools) to write your custom script to extract all the data from 1C database or use [1c-database-converter](https://github.com/soxoj/1c-database-converter) to convert database to a CSV files.
 
-- [ ] Написать скрипт для конвертации 1Cv8.CD в CSV
+```
+./run.py 8-2-14.1CD
+Target: 8-2-14.1CD
+Results found: 1
+1) Out Dir: 8-2-14.1CD_csv
+File Type: 1CD
+Status: Exported content of 1CD file
+
+------------------------------
+Total found: 1
+```
