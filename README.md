@@ -1,4 +1,4 @@
-# Guide to searching in different file types
+# The Ultimate Guide to Cross-Format File Search
 
 The goal of this guide is to describe tools for search and for simplification of search for text information in the most of popular files and databases.
 
@@ -7,7 +7,7 @@ It could benefit journalistic investigations, work with large volumes of data li
 The guide is applicable for searching in breaches of various formats (archive big text files, csv/sql), documents (pdf, xls/x, doc/x)
 and in specialized databases (1C, Cronos, etc.).
 
-[Russian version](./README-RU.md) | English version
+English version | [Russian version](./README-RU.md)
 
 ## Contents
 
