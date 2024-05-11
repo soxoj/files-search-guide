@@ -1,6 +1,9 @@
 # Guide to searching in different file types
 
 The goal of this guide is to describe tools for search and for simplification of search for text information in the most of popular files and databases.
+
+It could benefit journalistic investigations, work with large volumes of data like [document leaks](https://ddosecrets.com/wiki/Distributed_Denial_of_Secrets) and eDiscovery.
+
 The guide is applicable for searching in breaches of various formats (archive big text files, csv/sql), documents (pdf, xls/x, doc/x)
 and in specialized databases (1C, Cronos, etc.).
 
@@ -9,7 +12,10 @@ and in specialized databases (1C, Cronos, etc.).
 ## Contents
 
 - [Universal search](#universal-search)
+  - [Datashare](#datashare)
   - [dnGrep](#dngrep)
+  - [AstroGrep](#astrogrep)
+  - [Pinpoint](#pinpoint)
 - [Text files](#text-files)
   - [grep](#grep)
 - [Documents](#documents)
@@ -24,20 +30,49 @@ and in specialized databases (1C, Cronos, etc.).
 
 ## Universal search
 
+### Datashare
+
+[Datashare](https://datashare.icij.org/) - a multi-OS platform from ICIJ designed for sharing large datasets of documents, particularly among researchers and journalists.
+
+It allows you to search pdfs, images, texts, spreadsheets, slides and much more. 
+
+![image](https://datashare.icij.org/assets/screenshot-extract-1734cb41.png)
+
 ### dnGrep
 
-[dnGrep](http://dngrep.github.io/) - a universal tool with graphical user interface for Windows, that can do search through text files, documents,
-PDF and in the most popular formats of artchives. Regular expressions and recursive search in the directories are supported. Extra capatibilities: Windows Explorer integration!
+[dnGrep](http://dngrep.github.io/) - a tool with a graphical user interface for Windows, that can search through text files, documents,
+PDF and in the most popular formats of archives. Regular expressions and recursive searches in the directories are supported. Extra capabilities: Windows Explorer integration!
 
-Despite on some problems with visualization of search and fails with big archives dnGrep looks like the most perspective tool for mass search in text files.
+Despite some problems with the visualization of search and fails with big archives dnGrep looks like the most perspective tool for mass search in text files.
 
 ![image](https://github.com/dnGrep/dnGrep/wiki/Images/grep-main.png)
+
+### AstroGrep
+
+[AstroGrep](https://astrogrep.sourceforge.net/) - a tool with a graphical user interface for Windows that enables users to perform text searches across multiple files, making it particularly useful for those who need to manage large sets of documents. It supports various file formats and offers a user-friendly interface.
+
+The main advantages of AstroGrep include its ability to provide quick results from text searches within a vast array of files. Additionally, AstroGrep highlights the searched terms within the files, which simplifies the process of reviewing search results. It also includes useful functionalities like regular expression matching, which allows for more complex and precise searches.
+
+However, AstroGrep primarily focuses on text searches, so its utility is restricted to textual data and does not extend to searches within Excel documents, archives, image or audio files. 
+
+![image](https://astrogrep.sourceforge.net/pics/ss_main_new.png)
+
+### Pinpoint
+
+[Google Pinpoint](https://journaliststudio.google.com/pinpoint/about/) - a Cloud tool designed to help journalists manage large volumes of information.
+It supports various file types including documents (converts almost everything to PDF), images, and audio files, and integrates with Google Drive for efficient data management. The tool enhances research efficiency by enabling quick searches through extensive datasets.
+
+The advantages of Pinpoint include robust search capabilities that save time by simplifying the data review process. It also supports collaborative work, allowing multiple users to work on the same project simultaneously. 
+
+However, as a cloud-based tool, it requires a stable internet connection.
+
+![image](https://storage.googleapis.com/support-kms-prod/dBrMUtT6Ywj9XltPawwCMGkvjfVyQIaJ7zwX)
 
 ## Text files
 
 ### grep
 
-Unix tool `grep` is the standard of the searchers. You should only pass two parameters: search pattern and file, and the tool searches lines that match the pattern. The pattern can be a simple string (for example, phone number or email address).
+Unix tool `grep` is the standard of the searchers. You should only pass two parameters: search pattern and file, and the tool searches lines that match the pattern. The pattern can be a simple string (for example, a phone number or email address).
 
 `grep` is used by other utilities (or just its syntax), so let's consider some main arguments:
 
